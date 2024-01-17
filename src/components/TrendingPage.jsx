@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import GridLoader from "react-spinners/ClipLoader";
 import { Link } from "react-router-dom";
+import CircularProgress from "./CircularProgress";
 
 export default function TrendingPage() {
   const [lists, setLists] = useState([]);
@@ -92,9 +93,14 @@ export default function TrendingPage() {
                       ? `${item.release_date}`
                       : `${item.first_air_date}`}
                   </p>
-                  <div className=" absolute bottom-0 left-1 rounded-full w-10 h-10 bg-gray-800 text-white font-bold flex justify-center items-center">
-                    {Math.floor(Math.random() * 60 + 40)}%
-                  </div>
+                  {/* item.vote_average값이 존재하지 않으면 보여지지 않음 */}
+                  {item.vote_average && (
+                    <div className=" absolute bottom-0 left-1 rounded-full w-10 h-10 bg-gray-800 text-white font-bold flex justify-center items-center">
+                      <CircularProgress
+                        rate={`${Math.floor(item.vote_average * 10)}%`}
+                      />
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}

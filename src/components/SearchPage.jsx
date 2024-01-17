@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchPage() {
   const backgroundImageUrl =
     "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+  const navigate = useNavigate();
+  const [keyword, setKeyWord] = useState("");
+  const handleClick = () => {
+    navigate(`/search?keyword=${keyword}`);
+  };
+
+  const handleChange = (e) => {
+    setKeyWord(e.target.value);
+  };
   return (
     <div className="w-full flex justify-center">
       <div
@@ -20,11 +31,13 @@ export default function SearchPage() {
           {/* 인풋박스 */}
           <div className="relative">
             <input
+              onChange={handleChange}
               className="w-full py-3 px-4 text-gray-900 outline-none rounded-3xl"
               type="text"
               placeholder="search for movie, Tv, shows, person..."
             />
             <button
+              onClick={handleClick}
               className=" py-3 px-6 rounded-3xl absolute right-0 font-semibold hover:text-black"
               style={{
                 background:

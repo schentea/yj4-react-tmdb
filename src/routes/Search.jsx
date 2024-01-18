@@ -33,10 +33,12 @@ export default function Search() {
       .then((res) => res.json())
       .then((json) => {
         setData(json.results);
+
         console.log(json);
+        console.log(json.total_results);
       })
       .catch((err) => console.error("error:" + err));
-  }, [activeTab]);
+  }, [activeTab, keyword]);
 
   return (
     <Layout>
@@ -54,7 +56,6 @@ export default function Search() {
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}
-                {data.total_results}
               </button>
             ))}
           </div>

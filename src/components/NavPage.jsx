@@ -1,17 +1,38 @@
+import { useState } from "react";
 import logo from "../assets/logocat.png";
 import { FaPlus, FaBell, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function NavPage() {
+  const [scroll, setScroll] = useState(true);
+  document.addEventListener("wheel", (e) => {
+    // console.log(e.deltaY);
+    // 마우스 휠 내릴 때
+    // 네비게이션을 감추기 위해 scroll에 false
+    if (e.deltaY > 0) {
+      setScroll(false);
+    }
+    // 마우스 휠 올릴 때
+    // 네비게이션을 보이기 위해 scroll에 true
+    else if (e.deltaY < 0) {
+      setScroll(true);
+    }
+  });
   return (
-    <div className="w-full h-[60px] bg-[#032541] flex justify-center">
+    <div
+      className={`sticky top-0 ${
+        scroll ? "translate-y-0" : "-translate-y-[60px]"
+      } duration-500 w-full h-[60px] bg-[#032541] flex justify-center z-20`}
+    >
       {/* 중앙정렬된 네비게이션 컨테이너 */}
       <div className="max-w-[1300px] w-full h-full flex justify-between px-8">
         {/* 1.왼쪽 : 로고 + 메뉴 */}
         <div className="h-full flex space-x-8">
           {/* 로고 */}
           <div className="w-[50px] h-full flex items-center">
-            <img className="w-[40px]" src={logo} alt="main_logo" />
+            <Link to="/">
+              <img className="w-[40px]" src={logo} alt="main_logo" />
+            </Link>
           </div>
           {/* 메뉴 영역 */}
           <div className="h-full flex items-center space-x-6 text-white font-bold">

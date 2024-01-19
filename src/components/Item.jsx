@@ -18,7 +18,7 @@ export default function Item({ list, type }) {
         {/* Content */}
         <div className="relative w-fill h-[90px] pt-4 px-2">
           <h2 className="font-semibold text-[14px]">
-            {list.origianl_title || list.original_name}
+            {list.original_title || list.original_name}
           </h2>
           <p className="text-sm">{list.release_date || list.first_air_date}</p>
           {/* review */}

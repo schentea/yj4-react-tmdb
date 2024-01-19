@@ -11,34 +11,33 @@ export default function Footer() {
       {/* 2 */}
       <div className="w-[200px] text-white flex flex-col">
         <h3 className="uppercase font-semibold">the basic</h3>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem.</p>
-        <p>Lorem.</p>
+        <p>About TMDB</p>
+        <p>Contact Us</p>
+        <p>Support Forums</p>
+        <p>API</p>
+        <p>System Status</p>
       </div>
       {/* 3 */}
       <div className="w-[200px] text-white flex flex-col">
         <h3 className="uppercase font-semibold">get involved</h3>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem.</p>
-        <p>Lorem.</p>
+        <p>Contribution Bible</p>
+        <p>Add New Movie</p>
+        <p>Add New Tv Show</p>
       </div>
       {/* 4 */}
       <div className="w-[200px] text-white flex flex-col">
         <h3 className="uppercase font-semibold">community</h3>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem.</p>
-        <p>Lorem.</p>
+        <p>Guidelines</p>
+        <p>Discussions</p>
+        <p>Leaderboard</p>
       </div>
       {/* 5 */}
       <div className="w-[200px] text-white flex flex-col">
         <h3 className="uppercase font-semibold">legal</h3>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem, ipsum.</p>
-        <p>Lorem.</p>
-        <p>Lorem.</p>
+        <p>Terms of Use</p>
+        <p>API Terms of Use</p>
+        <p>Privacy Policy</p>
+        <p>DMCA Policy</p>
       </div>
     </div>
   );

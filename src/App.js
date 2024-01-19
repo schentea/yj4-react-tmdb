@@ -1,5 +1,6 @@
 import NavPage from "./components/NavPage";
 import SearchPage from "./components/SearchPage";
+import TrailersPage from "./components/TrailersPage";
 import TrendingPage from "./components/TrendingPage";
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
       <SearchPage />
       {/* Trending */}
       <TrendingPage />
+      {/* Trailers */}
+      <TrailersPage />
     </div>
   );
 }

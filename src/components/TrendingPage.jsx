@@ -9,7 +9,7 @@ export default function TrendingPage() {
   const [isLoding, setIsLoding] = useState();
   let tabs = [
     { id: "all", label: "All" },
-    { id: "moive", label: "Movies" },
+    { id: "movie", label: "Movies" },
     { id: "person", label: "People" },
     { id: "tv", label: "TV" },
   ];
@@ -30,6 +30,7 @@ export default function TrendingPage() {
     fetch(url, options)
       .then((res) => res.json())
       .then((json) => {
+        console.log(json?.results);
         setLists(json?.results.slice(0, 7));
       })
       .catch((err) => console.error("error:" + err));
@@ -75,7 +76,7 @@ export default function TrendingPage() {
           <div className="w-full h-[300px] flex flex-row justify-center bg-main">
             {lists.map((item) => (
               <Link to={`detail/${item.id}`} key={item.id}>
-                <div className="w-full h-[300px] m-2 relative px-2 space-y-4 object-cover">
+                <div className="w-full h-[300px] m-2 relative px-2 space-y-2 object-cover">
                   <img
                     className="w-full h-full rounded-md overflow-hidden"
                     src={

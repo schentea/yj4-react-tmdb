@@ -3,11 +3,13 @@ import Layout from "../components/Layout";
 import Pagination from "react-js-pagination";
 import "./Paging.css";
 import Item from "../components/Item";
+import { Skeleton } from "@chakra-ui/react";
 
 export default function Movies() {
   const type = "movie";
   const [lists, setLists] = useState();
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
     const options = {
@@ -22,9 +24,13 @@ export default function Movies() {
     fetch(url, options)
       .then((res) => res.json())
       .then((json) => {
-        setLists(json.results);
+        console.log(json);
+        setLists(json);
       })
       .catch((err) => console.error("error:" + err));
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, [page]);
   const handlePageChange = (page) => {
     setPage(page);
@@ -35,8 +41,14 @@ export default function Movies() {
         <div className="w-full flex flex-col items-center justify-center py-16">
           <div className="w-[1000px] flex flex-wrap gap-4 gap-y-8">
             {/* item */}
-            {lists?.map((list) => (
-              <Item list={list} type={type} />
+            {lists?.results?.map((list) => (
+              <>
+                {isLoading ? (
+                  <Skeleton width="180px" height="300px" rounded="xl" />
+                ) : (
+                  <Item list={list} type={type} />
+                )}
+              </>
             ))}
           </div>
           {/* pageNation */}

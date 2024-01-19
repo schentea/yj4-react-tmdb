@@ -1,10 +1,13 @@
 import { useState } from "react";
 import logo from "../assets/logocat.png";
-import { FaPlus, FaBell, FaSearch } from "react-icons/fa";
+import { FaPlus, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Button, useColorMode } from "@chakra-ui/react";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 export default function NavPage() {
   const [scroll, setScroll] = useState(true);
+  const { colorMode, toggleColorMode } = useColorMode();
   document.addEventListener("wheel", (e) => {
     // console.log(e.deltaY);
     // 마우스 휠 내릴 때
@@ -57,7 +60,9 @@ export default function NavPage() {
             EN
           </div>
           <div>
-            <FaBell />
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MdDarkMode /> : <MdLightMode />}
+            </Button>
           </div>
           <div className="w-8 h-8 bg-red-600 rounded-full flex justify-center items-center font-bold">
             C
